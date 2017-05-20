@@ -1,0 +1,22 @@
+{
+  "name": "FlashTech",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "babel-watch src/index.js",
+    "build": "babel src -d dist"
+  },
+  "repository": "git@github.com:martrik/FlashTech.git",
+  "author": "Martí Serra <martiserravivancos@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.5.0",
+    "babel-watch": "^2.0.6"
+  },
+  "dependencies": {
+    "alexa-sdk": "^1.0.9",
+    "axios": "^0.16.1"
+  }
+}
