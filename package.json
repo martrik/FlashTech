@@ -1,10 +1,12 @@
 {
   "name": "FlashTech",
   "version": "0.1.0",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "babel-watch src/index.js",
-    "build": "babel src -d dist"
+    "start": "node dist/index.js",
+    "start-dev": "babel-watch src/index.js",
+    "build": "babel src -d dist",
+    "deploy": "yarn build && now"
   },
   "repository": "git@github.com:martrik/FlashTech.git",
   "author": "Martí Serra <martiserravivancos@gmail.com>",
@@ -23,6 +25,8 @@
   "dependencies": {
     "alexa-sdk": "^1.0.9",
     "axios": "^0.16.1",
-    "babel-polyfill": "^6.23.0"
+    "babel-polyfill": "^6.23.0",
+    "express": "^4.15.3",
+    "uuid": "^3.0.1"
   }
 }
