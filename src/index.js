@@ -1,5 +1,4 @@
 import express from 'express';
-import uuid from 'uuid/v4';
 
 import news from './news';
 
@@ -7,25 +6,13 @@ require('babel-polyfill');
 
 const app = express();
 
-function transformArticle(article) {
-  return {
-    uid: uuid(),
-    updateDate: article.publishedAt || Date(),
-    titleText: article.title,
-    mainText: article.description,
-    redirectionUrl: article.url,
-  };
-}
-
-function buildResponse(payload) {
-  return payload.map(transformArticle);
-}
-
 async function newsResponse(source, res) {
   try {
-    const articles = await news.fetchArticlesFromSource(source);
-    res.status(200).json(buildResponse(articles));
+    const articles = await news.getArticlesFromSource(source);
+
+    res.status(200).json(articles);
   } catch (e) {
+    console.error(e);
     res.sendStatus(500);
   }
 }
@@ -59,14 +46,16 @@ app.get('/news/techradar', (req, res) => {
 });
 
 app.get('/news/tnw', (req, res) => {
-  newsResponse('the-new-web', res);
+  newsResponse('the-next-web', res);
 });
 
 app.get('/news/beat', (req, res) => {
   res.status(200).send('We are live, our API is save and sound! 🗞️');
 });
 
-
 app.listen(4242, () => {
   console.log('Flash Tech News running on port 4242.');
 });
+
+news.initCache();
+
