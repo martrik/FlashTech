@@ -77,8 +77,8 @@ async function reloadCache() {
     console.log(e);
   }
 
-  // Reload cache every 10 min
-  setTimeout(reloadCache, 100000);
+  // Reload cache every 30 min
+  setTimeout(reloadCache, 300000);
 }
 
 /**
@@ -91,6 +91,7 @@ async function initCache() {
 
 async function getArticlesFromSource(source) {
   if (cache[source]) {
+    console.log(`Getting cached news from ${source}.`);
     return cache[source];
   }
 
