@@ -185,35 +185,36 @@ function getArticlesFromSource(source) {
       switch (_context5.prev = _context5.next) {
         case 0:
           if (!cache[source]) {
-            _context5.next = 2;
+            _context5.next = 3;
             break;
           }
 
+          console.log('Getting cached news from ' + source + '.');
           return _context5.abrupt('return', cache[source]);
 
-        case 2:
+        case 3:
 
           console.log('News from ' + source + ' not in cache, fetching them...');
 
-          _context5.prev = 3;
-          _context5.next = 6;
+          _context5.prev = 4;
+          _context5.next = 7;
           return regeneratorRuntime.awrap(fetchArticlesFromSource(source));
 
-        case 6:
+        case 7:
           articles = _context5.sent;
           return _context5.abrupt('return', articles.map(transformArticle));
 
-        case 10:
-          _context5.prev = 10;
-          _context5.t0 = _context5['catch'](3);
+        case 11:
+          _context5.prev = 11;
+          _context5.t0 = _context5['catch'](4);
           throw _context5.t0;
 
-        case 13:
+        case 14:
         case 'end':
           return _context5.stop();
       }
     }
-  }, null, this, [[3, 10]]);
+  }, null, this, [[4, 11]]);
 }
 
 exports.default = {

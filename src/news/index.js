@@ -15,9 +15,9 @@ let cache = {};
 function transformArticle(article) {
   return {
     uid: uuid(),
-    updateDate: new Date().toISOString(),
+    updateDate: article.publishedAt || new Date().toISOString(),
     titleText: article.title,
-    mainText: article.description,
+    mainText: `${article.title}. ${article.description}`,
     redirectionUrl: article.url,
   };
 }
